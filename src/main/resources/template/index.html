@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>八年级下册人教版英语辅导资料</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="八年级">
+    <meta name="author" content="lynn"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<div class="main"></div>
+</body>
+<style>
+    html {
+        background: #eee;
+    }
+
+    .title h4 {
+        text-align: center;
+    }
+
+    .main {
+        max-width: 960px;
+        background: #fff;
+        margin: 1em auto 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border: 1px solid #fff;
+        border-width: 0 2em;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .main img {
+            width: 100%;
+        }
+    }
+
+    .content p {
+        word-break: break-all;
+        text-indent: 2em;
+        line-height: 2;
+        margin: 0 0 0;
+    }
+
+    .end p {
+        text-align: right;
+    }
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        for (let i = -1; i < 9; i++) {
+            $(".main").append("<img src=\"http://image.promptness.cn/" + i + ".jpg\">")
+        }
+        Cookies.set('page', 9);
+
+        $(window).scroll(function() {
+            const scrollTop = $(this).scrollTop();
+            const scrollHeight = $(document).height();
+            const windowHeight = $(this).height();
+            if (scrollTop + windowHeight === scrollHeight) {
+                const page = parseInt(Cookies.get('page'));
+                if (page > 288) {
+                    return;
+                }
+                let limit = page + 10;
+                if (limit > 288) {
+                    limit = 289;
+                }
+                for (let i =  page; i < limit; i++) {
+                    $(".main").append("<img src=\"http://image.promptness.cn/" + i + ".jpg\">");
+                }
+                Cookies.set('page', limit);
+            }
+        });
+    });
+</script>
+</html>
+
